@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Awareness | Protect Our Forests</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-green: #2E7D32;
+            --light-green: #4CAF50;
+            --accent-green: #81c784;
+            --dark-green: #1B5E20;
+            --bg-light: #f8fdf8;
+            --text-dark: #2c3e50;
+            --text-light: #546e7a;
+            --white: #ffffff;
+            --danger: #e53935;
+            --warning: #ffa726;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: rgba(46, 125, 50, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .admin-btn-nav {
+            background-color: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .admin-btn-nav:hover {
+            background-color: var(--white);
+            color: var(--primary-green) !important;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1448375240586-dfd8d395ea6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            opacity: 0.95;
+        }
+
+        .btn {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background-color: var(--light-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--dark-green);
+            font-size: 2.2rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--light-green);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- ABOUT --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--primary-green);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+        }
+
+        /* --- KNOWLEDGE HUB --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-img {
+            height: 220px;
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+        }
+
+        .card h3 {
+            color: var(--dark-green);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- QUIZ --- */
+        .quiz-wrapper {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+
+        .quiz-container {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .question-box h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .question-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background-color: #fafafa;
+            border: 2px solid #eeeeee;
+            padding: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: left;
+            position: relative;
+        }
+
+        .option-btn:hover {
+            background-color: #f1f8e9;
+            border-color: var(--accent-green);
+        }
+
+        .option-btn.correct {
+            background-color: var(--light-green);
+            color: white;
+            border-color: var(--dark-green);
+        }
+
+        .option-btn.wrong {
+            background-color: #ffebee;
+            color: #c62828;
+            border-color: #e53935;
+        }
+
+        /* --- ADMIN PANEL --- */
+        #admin-view {
+            display: none;
+            padding: 8rem 5% 4rem; /* Top padding clears sticky nav */
+            background-color: #f1f5f9;
+            min-height: 100vh;
+        }
+
+        /* Login Box Styling */
+        .login-box {
+            max-width: 400px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        
+        .login-box h2 {
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .login-error {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: var(--text-light);
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-green);
+            border-bottom-color: var(--primary-green);
+        }
+
+        .admin-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .admin-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        
+        .btn-edit { background-color: #e3f2fd; color: #1976d2; margin-right: 5px; }
+        .btn-delete { background-color: #ffebee; color: #d32f2f; }
+        .btn-add { background-color: var(--primary-green); color: white; margin-top: 1rem; }
+        .btn-save { background-color: var(--primary-green); color: white; margin-right: 10px;}
+        .btn-cancel { background-color: #eee; color: #333; }
+        .btn-logout { background-color: #ffebee; color: #d32f2f; border: 1px solid #ffcdd2; }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-green);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; 
+                /* Simple mobile menu handling for this demo: hidden */
+            }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: var(--primary-green);
+                width: 100%;
+                padding: 1rem;
+            }
+            
+            .grid-2, .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo" onclick="switchView('user')">
+            <span>🌿</span> Nature Awareness
+        </div>
+        <ul class="nav-links">
+            <li><a onclick="navigateTo('home')">Home</a></li>
+            <li><a onclick="navigateTo('about')">About</a></li>
+            <li><a onclick="navigateTo('learn')">Learn</a></li>
+            <li><a onclick="navigateTo('quiz')">Quiz</a></li>
+            <li><a class="admin-btn-nav" onclick="switchView('admin')">Admin Panel</a></li>
+        </ul>
+    </nav>
+
+    <!-- USER VIEW CONTAINER -->
+    <main id="user-view">
+        <!-- Hero Section -->
+        <header id="home" class="hero">
+            <h1>Connect with Nature.<br>Protect our Future.</h1>
+            <p>A web-based initiative to educate users about forest conservation, wildlife protection, and sustainable living.</p>
+            <a onclick="navigateTo('quiz')" class="btn btn-primary">Test Your Knowledge</a>
+        </header>
+
+        <!-- About System -->
+        <section id="about">
+            <h2 class="section-title">About The Project</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3>Existing Challenges</h3>
+                    <p>Traditional forest awareness methods like posters and books often lack reach and interactivity. They fail to effectively engage modern users or assess their understanding of critical environmental issues.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Our Solution</h3>
+                    <p>This platform provides a centralized, interactive hub. By combining visual education with gamified assessment, we make learning about nature accessible, measurable, and engaging for everyone.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational Content (Dynamic) -->
+        <section id="learn" style="background-color: #f1f8e9;">
+            <h2 class="section-title">Knowledge Hub</h2>
+            <div class="content-grid" id="knowledge-container">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- Quiz Section (Dynamic) -->
+        <section id="quiz">
+            <h2 class="section-title">Interactive Quiz</h2>
+            <div class="quiz-wrapper">
+                <div class="quiz-container">
+                    <div id="quiz-ui">
+                        <div class="question-box">
+                            <h3 id="question-text">Loading Question...</h3>
+                            <p id="question-number" class="question-meta">Question 1 of 5</p>
+                        </div>
+                        <div class="options-grid" id="options-container">
+                            <!-- Options injected by JS -->
+                        </div>
+                        <button id="next-btn" class="btn btn-primary" style="margin-top: 1.5rem; display: none;" onclick="nextQuestion()">Next Question</button>
+                    </div>
+                    <div id="result-ui" style="display: none;">
+                        <h3>Quiz Completed!</h3>
+                        <p style="font-size: 1.2rem; margin: 10px 0;">You scored <span id="final-score" style="color: var(--primary-green); font-weight: bold;">0</span> out of <span id="total-questions">0</span></p>
+                        <div id="message" style="margin: 1.5rem 0; color: var(--text-light);"></div>
+                        <button class="btn btn-primary" onclick="restartQuiz()">Retake Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Nature Awareness Project. Designed to Protect & Educate.</p>
+        </footer>
+    </main>
+
+    <!-- ADMIN VIEW CONTAINER -->
+    <section id="admin-view">
+        
+        <!-- LOGIN PANEL -->
+        <div id="admin-login-panel">
+            <div class="login-box">
+                <h2>Admin Login</h2>
+                <p style="margin-bottom: 20px; color: #666;">Please verify your identity to continue.</p>
+                <div class="login-error" id="login-error-msg">Invalid Username or Password</div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="login-username" class="form-control" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter password">
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="attemptLogin()">Login</button>
+                <button class="btn action-btn btn-cancel" style="width: 100%; margin-top: 10px; background: none;" onclick="switchView('user')">Back to Home</button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD PANEL (Initially Hidden) -->
+        <div id="admin-dashboard-panel" style="display: none;">
+            <div class="admin-header">
+                <h2 style="color: var(--dark-green);">Admin Dashboard</h2>
+                <div>
+                    <button class="action-btn btn-logout" onclick="logout()">Logout</button>
+                    <button class="btn btn-primary" style="margin-left: 10px;" onclick="switchView('user')">View Site</button>
+                </div>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="switchAdminTab('knowledge')">Knowledge Hub</button>
+                <button class="tab-btn" onclick="switchAdminTab('quiz')">Quiz Questions</button>
+            </div>
+
+            <!-- Admin Knowledge Panel -->
+            <div id="admin-knowledge-panel">
+                <div id="admin-knowledge-list" class="item-list">
+                    <!-- Rendered JS -->
+                </div>
+                <button class="btn action-btn btn-add" onclick="showAddKnowledgeForm()">+ Add New Topic</button>
+            </div>
+
+            <!-- Admin Quiz Panel -->
+            <div id="admin-quiz-panel" style="display: none;">
+                <div id="admin-quiz-list" class="item-list">
+                    <!-- Rendered JS -->
+                </div>
+                <button class="btn action-btn btn-add" onclick="showAddQuizForm()">+ Add New Question</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- STATE MANAGEMENT ---
+        const defaultData = {
+            knowledge: [
+                {
+                    id: 1,
+                    title: "Forest Conservation",
+                    text: "Forests cover 31% of our planet's land area. They play a vital role in filtering the air we breathe and mitigating climate change by absorbing carbon dioxide.",
+                    image: "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                },
+                {
+                    id: 2,
+                    title: "Wildlife Protection",
+                    text: "Biodiversity is essential for a healthy ecosystem. Protecting wildlife habitats ensures the survival of species and maintains the balance of nature.",
+                    image: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                },
+                {
+                    id: 3,
+                    title: "Sustainable Living",
+                    text: "Reducing waste, recycling, and using renewable energy sources are small steps that create a massive impact on preserving our natural resources.",
+                    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                }
+            ],
+            quiz: [
+                {
+                    id: 1,
+                    question: "Which gas do trees primarily absorb from the atmosphere?",
+                    options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+                    correct: 1
+                },
+                {
+                    id: 2,
+                    question: "What is the primary cause of loss of biodiversity?",
+                    options: ["Habitat destruction", "Noise pollution", "Tourism", "Wind energy"],
+                    correct: 0
+                },
+                {
+                    id: 3,
+                    question: "Which of the following is a renewable resource?",
+                    options: ["Coal", "Natural Gas", "Solar Energy", "Plastic"],
+                    correct: 2
+                },
+                {
+                    id: 4,
+                    question: "What percentage of the Earth's land is roughly covered by forests?",
+                    options: ["10%", "31%", "50%", "75%"],
+                    correct: 1
+                },
+                {
+                    id: 5,
+                    question: "The '3 Rs' of sustainability are Reduce, Reuse, and...?",
+                    options: ["Reinvent", "Reply", "Recycle", "Recharge"],
+                    correct: 2
+                }
+            ]
+        };
+
+        // Initialize state
+        let appData = JSON.parse(JSON.stringify(defaultData)); 
+        let isLoggedIn = false;
+        
+        // --- AUTHENTICATION ---
+        function attemptLogin() {
+            const u = document.getElementById('login-username').value;
+            const p = document.getElementById('login-password').value;
+            const errorMsg = document.getElementById('login-error-msg');
+            
+            if(u === 'admin' && p === 'admin123') {
+                isLoggedIn = true;
+                errorMsg.style.display = 'none';
+                // Clear inputs
+                document.getElementById('login-username').value = '';
+                document.getElementById('login-password').value = '';
+                updateAdminView();
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function logout() {
+            isLoggedIn = false;
+            updateAdminView();
+        }
+
+        function updateAdminView() {
+            const loginPanel = document.getElementById('admin-login-panel');
+            const dashboardPanel = document.getElementById('admin-dashboard-panel');
+            
+            if(isLoggedIn) {
+                loginPanel.style.display = 'none';
+                dashboardPanel.style.display = 'block';
+                renderAdminKnowledge();
+                renderAdminQuiz();
+            } else {
+                loginPanel.style.display = 'block';
+                dashboardPanel.style.display = 'none';
+            }
+        }
+
+        // --- USER VIEW FUNCTIONS ---
+
+        function renderKnowledgeHub() {
+            const container = document.getElementById('knowledge-container');
+            container.innerHTML = '';
+            appData.knowledge.forEach(item => {
+                container.innerHTML += `
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('${item.image}');"></div>
+                        <div class="card-content">
+                            <h3>${item.title}</h3>
+                            <p>${item.text}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let isAnswered = false;
+
+        function renderQuizQuestion() {
+            const quizUi = document.getElementById('quiz-ui');
+            const resultUi = document.getElementById('result-ui');
+            const questionText = document.getElementById('question-text');
+            const questionNumber = document.getElementById('question-number');
+            const optionsContainer = document.getElementById('options-container');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (appData.quiz.length === 0) {
+                questionText.textContent = "No questions available.";
+                optionsContainer.innerHTML = "";
+                return;
+            }
+
+            isAnswered = false;
+            nextBtn.style.display = 'none';
+            quizUi.style.display = 'block';
+            resultUi.style.display = 'none';
+
+            const currentQ = appData.quiz[currentQuestionIndex];
+            
+            questionText.textContent = currentQ.question;
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${appData.quiz.length}`;
+            
+            optionsContainer.innerHTML = '';
+            
+            currentQ.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIndex, btnElement) {
+            if(isAnswered) return;
+            isAnswered = true;
+
+            const correctIndex = appData.quiz[currentQuestionIndex].correct;
+            const allButtons = document.getElementById('options-container').children;
+
+            if(selectedIndex === correctIndex) {
+                btnElement.classList.add('correct');
+                score++;
+            } else {
+                btnElement.classList.add('wrong');
+                allButtons[correctIndex].classList.add('correct');
+            }
+            document.getElementById('next-btn').style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if(currentQuestionIndex < appData.quiz.length) {
+                renderQuizQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('result-ui').style.display = 'block';
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('total-questions').textContent = appData.quiz.length;
+
+            const messageDiv = document.getElementById('message');
+            if(score === appData.quiz.length) {
+                messageDiv.textContent = "Outstanding! You are a true Nature Guardian! 🌳";
+            } else if (score >= appData.quiz.length / 2) {
+                messageDiv.textContent = "Good job! You know your basics well. 🌱";
+            } else {
+                messageDiv.textContent = "Keep learning! Nature needs more attention. 🍂";
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            renderQuizQuestion();
+        }
+
+        // --- ADMIN VIEW FUNCTIONS ---
+
+        function renderAdminKnowledge() {
+            const list = document.getElementById('admin-knowledge-list');
+            list.innerHTML = '';
+            appData.knowledge.forEach((item, index) => {
+                list.innerHTML += `
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h4>${item.title}</h4>
+                            <div>
+                                <button class="action-btn btn-edit" onclick="editKnowledge(${index})">Edit</button>
+                                <button class="action-btn btn-delete" onclick="deleteKnowledge(${index})">Delete</button>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666;">${item.text.substring(0, 100)}...</p>
+                    </div>
+                `;
+            });
+        }
+
+        function renderAdminQuiz() {
+            const list = document.getElementById('admin-quiz-list');
+            list.innerHTML = '';
+            appData.quiz.forEach((item, index) => {
+                list.innerHTML += `
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h4>Q${index+1}: ${item.question}</h4>
+                            <div>
+                                <button class="action-btn btn-edit" onclick="editQuiz(${index})">Edit</button>
+                                <button class="action-btn btn-delete" onclick="deleteQuiz(${index})">Delete</button>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.9rem; color: #666;">
+                            Correct: <span style="color: green; font-weight: bold;">${item.options[item.correct]}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // --- EDITING LOGIC ---
+
+        function editKnowledge(index) {
+            const item = appData.knowledge[index];
+            const list = document.getElementById('admin-knowledge-list');
+            // Replace the card with a form
+            const formHtml = `
+                <div class="admin-card" style="border: 2px solid var(--primary-green);">
+                    <h3>Edit Knowledge Card</h3>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" id="edit-k-title-${index}" value="${item.title}">
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" class="form-control" id="edit-k-img-${index}" value="${item.image}">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea class="form-control" rows="3" id="edit-k-text-${index}">${item.text}</textarea>
+                    </div>
+                    <button class="action-btn btn-save" onclick="saveKnowledge(${index})">Save</button>
+                    <button class="action-btn btn-cancel" onclick="renderAdminKnowledge()">Cancel</button>
+                </div>
+            `;
+            // For simplicity in this demo, we re-render list but inject form at index
+            renderAdminKnowledge(); 
+            // Now hackily find the child and replace it. 
+            const cardToReplace = list.children[index];
+            cardToReplace.outerHTML = formHtml;
+        }
+
+        function saveKnowledge(index) {
+            appData.knowledge[index].title = document.getElementById(`edit-k-title-${index}`).value;
+            appData.knowledge[index].image = document.getElementById(`edit-k-img-${index}`).value;
+            appData.knowledge[index].text = document.getElementById(`edit-k-text-${index}`).value;
+            renderAdminKnowledge();
+            renderKnowledgeHub(); // Update user view
+            alert("Knowledge updated!");
+        }
+
+        function deleteKnowledge(index) {
+            if(confirm("Delete this topic?")) {
+                appData.knowledge.splice(index, 1);
+                renderAdminKnowledge();
+                renderKnowledgeHub();
+            }
+        }
+
+        function showAddKnowledgeForm() {
+            const list = document.getElementById('admin-knowledge-list');
+            const formHtml = `
+                <div class="admin-card" style="border: 2px dashed var(--primary-green);">
+                    <h3>Add New Topic</h3>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" id="new-k-title">
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" class="form-control" id="new-k-img" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea class="form-control" rows="3" id="new-k-text"></textarea>
+                    </div>
+                    <button class="action-btn btn-save" onclick="addKnowledge()">Add Topic</button>
+                    <button class="action-btn btn-cancel" onclick="renderAdminKnowledge()">Cancel</button>
+                </div>
+            `;
+            list.innerHTML += formHtml;
+        }
+
+        function addKnowledge() {
+            const newItem = {
+                id: Date.now(),
+                title: document.getElementById('new-k-title').value,
+                image: document.getElementById('new-k-img').value || 'https://via.placeholder.com/600',
+                text: document.getElementById('new-k-text').value
+            };
+            appData.knowledge.push(newItem);
+            renderAdminKnowledge();
+            renderKnowledgeHub();
+        }
+
+        // --- QUIZ EDITING LOGIC ---
+
+        function editQuiz(index) {
+            const item = appData.quiz[index];
+            const list = document.getElementById('admin-quiz-list');
+            const formHtml = `
+                <div class="admin-card" style="border: 2px solid var(--primary-green);">
+                    <h3>Edit Question</h3>
+                    <div class="form-group">
+                        <label>Question</label>
+                        <input type="text" class="form-control" id="edit-q-text-${index}" value="${item.question}">
+                    </div>
+                    <div class="form-group">
+                        <label>Option 1 (Index 0)</label>
+                        <input type="text" class="form-control" id="edit-q-o0-${index}" value="${item.options[0]}">
+                    </div>
+                    <div class="form-group">
+                        <label>Option 2 (Index 1)</label>
+                        <input type="text" class="form-control" id="edit-q-o1-${index}" value="${item.options[1]}">
+                    </div>
+                    <div class="form-group">
+                        <label>Option 3 (Index 2)</label>
+                        <input type="text" class="form-control" id="edit-q-o2-${index}" value="${item.options[2]}">
+                    </div>
+                    <div class="form-group">
+                        <label>Option 4 (Index 3)</label>
+                        <input type="text" class="form-control" id="edit-q-o3-${index}" value="${item.options[3]}">
+                    </div>
+                    <div class="form-group">
+                        <label>Correct Answer Index (0-3)</label>
+                        <input type="number" min="0" max="3" class="form-control" id="edit-q-correct-${index}" value="${item.correct}">
+                    </div>
+                    <button class="action-btn btn-save" onclick="saveQuiz(${index})">Save</button>
+                    <button class="action-btn btn-cancel" onclick="renderAdminQuiz()">Cancel</button>
+                </div>
+            `;
+            const cardToReplace = list.children[index];
+            cardToReplace.outerHTML = formHtml;
+        }
+
+        function saveQuiz(index) {
+            appData.quiz[index].question = document.getElementById(`edit-q-text-${index}`).value;
+            appData.quiz[index].options = [
+                document.getElementById(`edit-q-o0-${index}`).value,
+                document.getElementById(`edit-q-o1-${index}`).value,
+                document.getElementById(`edit-q-o2-${index}`).value,
+                document.getElementById(`edit-q-o3-${index}`).value
+            ];
+            appData.quiz[index].correct = parseInt(document.getElementById(`edit-q-correct-${index}`).value);
+            renderAdminQuiz();
+            restartQuiz(); // Reset user quiz with new data
+            alert("Question updated!");
+        }
+
+        function deleteQuiz(index) {
+            if(confirm("Delete this question?")) {
+                appData.quiz.splice(index, 1);
+                renderAdminQuiz();
+                restartQuiz();
+            }
+        }
+
+        function showAddQuizForm() {
+            const list = document.getElementById('admin-quiz-list');
+            const formHtml = `
+                <div class="admin-card" style="border: 2px dashed var(--primary-green);">
+                    <h3>Add New Question</h3>
+                    <div class="form-group">
+                        <label>Question</label>
+                        <input type="text" class="form-control" id="new-q-text">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" class="form-control" id="new-q-o0" placeholder="Option 1"></div>
+                        <div class="form-group"><input type="text" class="form-control" id="new-q-o1" placeholder="Option 2"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" class="form-control" id="new-q-o2" placeholder="Option 3"></div>
+                        <div class="form-group"><input type="text" class="form-control" id="new-q-o3" placeholder="Option 4"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Correct Index (0-3)</label>
+                        <input type="number" min="0" max="3" class="form-control" id="new-q-correct" value="0">
+                    </div>
+                    <button class="action-btn btn-save" onclick="addQuiz()">Add Question</button>
+                    <button class="action-btn btn-cancel" onclick="renderAdminQuiz()">Cancel</button>
+                </div>
+            `;
+            list.innerHTML += formHtml;
+        }
+
+        function addQuiz() {
+            const newItem = {
+                id: Date.now(),
+                question: document.getElementById('new-q-text').value,
+                options: [
+                    document.getElementById('new-q-o0').value,
+                    document.getElementById('new-q-o1').value,
+                    document.getElementById('new-q-o2').value,
+                    document.getElementById('new-q-o3').value
+                ],
+                correct: parseInt(document.getElementById('new-q-correct').value)
+            };
+            appData.quiz.push(newItem);
+            renderAdminQuiz();
+            restartQuiz();
+        }
+
+        // --- NAVIGATION & ROUTING ---
+
+        function switchView(viewName) {
+            const userView = document.getElementById('user-view');
+            const adminView = document.getElementById('admin-view');
+            
+            if(viewName === 'admin') {
+                userView.style.display = 'none';
+                adminView.style.display = 'block';
+                updateAdminView();
+                window.scrollTo(0,0);
+            } else {
+                adminView.style.display = 'none';
+                userView.style.display = 'block';
+            }
+        }
+
+        function switchAdminTab(tab) {
+            const kPanel = document.getElementById('admin-knowledge-panel');
+            const qPanel = document.getElementById('admin-quiz-panel');
+            const btns = document.querySelectorAll('.tab-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+
+            if(tab === 'knowledge') {
+                kPanel.style.display = 'block';
+                qPanel.style.display = 'none';
+                btns[0].classList.add('active');
+            } else {
+                kPanel.style.display = 'none';
+                qPanel.style.display = 'block';
+                btns[1].classList.add('active');
+            }
+        }
+
+        function navigateTo(sectionId) {
+            // Ensure we are in user view first
+            switchView('user');
+            
+            // Allow slight delay for DOM to reappear if switching from admin
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if(element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 50);
+        }
+
+        // --- INITIALIZATION ---
+        window.onload = function() {
+            renderKnowledgeHub();
+            renderQuizQuestion();
+        }
+
+    </script>
+</body>
+</html>
