@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +18,8 @@
             --white: #ffffff;
             --danger: #e53935;
             --warning: #ffa726;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -80,10 +81,10 @@
         }
 
         .admin-btn-nav {
-            background-color: rgba(255,255,255,0.2);
+            background-color: rgba(255, 255, 255, 0.2);
             padding: 6px 16px;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .admin-btn-nav:hover {
@@ -93,7 +94,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1448375240586-dfd8d395ea6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1448375240586-dfd8d395ea6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             height: 85vh;
@@ -109,7 +110,7 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.2rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             line-height: 1.2;
         }
 
@@ -117,7 +118,7 @@
             font-size: 1.25rem;
             max-width: 700px;
             margin-bottom: 2.5rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             opacity: 0.95;
         }
 
@@ -244,6 +245,223 @@
             font-size: 0.95rem;
         }
 
+        .card:hover {
+            cursor: pointer;
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-close:hover {
+            background: var(--danger);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .modal-body {
+            padding: 3rem;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .modal-body h2 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .modal-page-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .modal-footer {
+            padding: 1.5rem 3rem;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+        }
+
+        .page-indicator {
+            font-weight: 600;
+            color: var(--text-light);
+            background: #eee;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .modal-nav-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 10px 25px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-prev {
+            background: #e0e0e0;
+            color: #666;
+        }
+
+        .btn-next {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Admin Page Style */
+        .admin-pages-list {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        .page-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+
+        .page-item textarea {
+            flex: 1;
+        }
+
+        .ai-status {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            color: var(--primary-green);
+            display: none;
+            font-weight: 600;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(46, 125, 50, 0.1);
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .ai-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: opacity 0.2s;
+        }
+
+        .ai-btn:hover {
+            opacity: 0.9;
+        }
+
+        .ai-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+
+
         /* --- QUIZ --- */
         .quiz-wrapper {
             background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
@@ -314,7 +532,8 @@
         /* --- ADMIN PANEL --- */
         #admin-view {
             display: none;
-            padding: 8rem 5% 4rem; /* Top padding clears sticky nav */
+            padding: 8rem 5% 4rem;
+            /* Top padding clears sticky nav */
             background-color: #f1f5f9;
             min-height: 100vh;
         }
@@ -329,7 +548,7 @@
             box-shadow: var(--shadow-lg);
             text-align: center;
         }
-        
+
         .login-box h2 {
             color: var(--dark-green);
             margin-bottom: 1.5rem;
@@ -411,12 +630,12 @@
             border-radius: 8px;
             font-size: 1rem;
         }
-        
+
         .form-row {
             display: flex;
             gap: 1rem;
         }
-        
+
         .form-row .form-group {
             flex: 1;
         }
@@ -430,13 +649,40 @@
             font-weight: 600;
             transition: opacity 0.2s;
         }
-        
-        .btn-edit { background-color: #e3f2fd; color: #1976d2; margin-right: 5px; }
-        .btn-delete { background-color: #ffebee; color: #d32f2f; }
-        .btn-add { background-color: var(--primary-green); color: white; margin-top: 1rem; }
-        .btn-save { background-color: var(--primary-green); color: white; margin-right: 10px;}
-        .btn-cancel { background-color: #eee; color: #333; }
-        .btn-logout { background-color: #ffebee; color: #d32f2f; border: 1px solid #ffcdd2; }
+
+        .btn-edit {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            margin-right: 5px;
+        }
+
+        .btn-delete {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        .btn-add {
+            background-color: var(--primary-green);
+            color: white;
+            margin-top: 1rem;
+        }
+
+        .btn-save {
+            background-color: var(--primary-green);
+            color: white;
+            margin-right: 10px;
+        }
+
+        .btn-cancel {
+            background-color: #eee;
+            color: #333;
+        }
+
+        .btn-logout {
+            background-color: #ffebee;
+            color: #d32f2f;
+            border: 1px solid #ffcdd2;
+        }
 
         .item-list {
             display: flex;
@@ -447,7 +693,7 @@
         /* --- FOOTER --- */
         footer {
             background-color: var(--dark-green);
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-align: center;
             padding: 3rem 5%;
         }
@@ -455,9 +701,10 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; 
+                display: none;
                 /* Simple mobile menu handling for this demo: hidden */
             }
+
             .nav-links.active {
                 display: flex;
                 flex-direction: column;
@@ -468,16 +715,23 @@
                 width: 100%;
                 padding: 1rem;
             }
-            
-            .grid-2, .form-row {
+
+            .grid-2,
+            .form-row {
                 grid-template-columns: 1fr;
             }
-            
-            .hero h1 { font-size: 2.2rem; }
-            .section-title { font-size: 1.8rem; }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation -->
@@ -499,7 +753,8 @@
         <!-- Hero Section -->
         <header id="home" class="hero">
             <h1>Connect with Nature.<br>Protect our Future.</h1>
-            <p>A web-based initiative to educate users about forest conservation, wildlife protection, and sustainable living.</p>
+            <p>A web-based initiative to educate users about forest conservation, wildlife protection, and sustainable
+                living.</p>
             <a onclick="navigateTo('quiz')" class="btn btn-primary">Test Your Knowledge</a>
         </header>
 
@@ -509,11 +764,15 @@
             <div class="grid-2">
                 <div class="info-card">
                     <h3>Existing Challenges</h3>
-                    <p>Traditional forest awareness methods like posters and books often lack reach and interactivity. They fail to effectively engage modern users or assess their understanding of critical environmental issues.</p>
+                    <p>Traditional forest awareness methods like posters and books often lack reach and interactivity.
+                        They fail to effectively engage modern users or assess their understanding of critical
+                        environmental issues.</p>
                 </div>
                 <div class="info-card">
                     <h3>Our Solution</h3>
-                    <p>This platform provides a centralized, interactive hub. By combining visual education with gamified assessment, we make learning about nature accessible, measurable, and engaging for everyone.</p>
+                    <p>This platform provides a centralized, interactive hub. By combining visual education with
+                        gamified assessment, we make learning about nature accessible, measurable, and engaging for
+                        everyone.</p>
                 </div>
             </div>
         </section>
@@ -539,11 +798,14 @@
                         <div class="options-grid" id="options-container">
                             <!-- Options injected by JS -->
                         </div>
-                        <button id="next-btn" class="btn btn-primary" style="margin-top: 1.5rem; display: none;" onclick="nextQuestion()">Next Question</button>
+                        <button id="next-btn" class="btn btn-primary" style="margin-top: 1.5rem; display: none;"
+                            onclick="nextQuestion()">Next Question</button>
                     </div>
                     <div id="result-ui" style="display: none;">
                         <h3>Quiz Completed!</h3>
-                        <p style="font-size: 1.2rem; margin: 10px 0;">You scored <span id="final-score" style="color: var(--primary-green); font-weight: bold;">0</span> out of <span id="total-questions">0</span></p>
+                        <p style="font-size: 1.2rem; margin: 10px 0;">You scored <span id="final-score"
+                                style="color: var(--primary-green); font-weight: bold;">0</span> out of <span
+                                id="total-questions">0</span></p>
                         <div id="message" style="margin: 1.5rem 0; color: var(--text-light);"></div>
                         <button class="btn btn-primary" onclick="restartQuiz()">Retake Quiz</button>
                     </div>
@@ -554,11 +816,33 @@
         <footer>
             <p>&copy; 2026 Nature Awareness Project. Designed to Protect & Educate.</p>
         </footer>
+
+        <!-- Modal for Detailed Content -->
+        <div id="knowledge-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeKnowledgeModal()">&times;</button>
+                <div id="modal-image" class="modal-image"></div>
+                <div class="modal-body">
+                    <h2 id="modal-title">Topic Title</h2>
+                    <div id="modal-page-content" class="modal-page-content">
+                        <!-- Content goes here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span id="page-indicator" class="page-indicator">Page 1 of 3</span>
+                    <div class="modal-nav-btns">
+                        <button id="prev-page-btn" class="nav-btn btn-prev"
+                            onclick="changeModalPage(-1)">Previous</button>
+                        <button id="next-page-btn" class="nav-btn btn-next" onclick="changeModalPage(1)">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- ADMIN VIEW CONTAINER -->
     <section id="admin-view">
-        
+
         <!-- LOGIN PANEL -->
         <div id="admin-login-panel">
             <div class="login-box">
@@ -573,8 +857,10 @@
                     <label>Password</label>
                     <input type="password" id="login-password" class="form-control" placeholder="Enter password">
                 </div>
-                <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="attemptLogin()">Login</button>
-                <button class="btn action-btn btn-cancel" style="width: 100%; margin-top: 10px; background: none;" onclick="switchView('user')">Back to Home</button>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 10px;"
+                    onclick="attemptLogin()">Login</button>
+                <button class="btn action-btn btn-cancel" style="width: 100%; margin-top: 10px; background: none;"
+                    onclick="switchView('user')">Back to Home</button>
             </div>
         </div>
 
@@ -584,13 +870,15 @@
                 <h2 style="color: var(--dark-green);">Admin Dashboard</h2>
                 <div>
                     <button class="action-btn btn-logout" onclick="logout()">Logout</button>
-                    <button class="btn btn-primary" style="margin-left: 10px;" onclick="switchView('user')">View Site</button>
+                    <button class="btn btn-primary" style="margin-left: 10px;" onclick="switchView('user')">View
+                        Site</button>
                 </div>
             </div>
 
             <div class="admin-tabs">
                 <button class="tab-btn active" onclick="switchAdminTab('knowledge')">Knowledge Hub</button>
                 <button class="tab-btn" onclick="switchAdminTab('quiz')">Quiz Questions</button>
+                <button class="tab-btn" onclick="switchAdminTab('settings')">Settings</button>
             </div>
 
             <!-- Admin Knowledge Panel -->
@@ -608,8 +896,28 @@
                 </div>
                 <button class="btn action-btn btn-add" onclick="showAddQuizForm()">+ Add New Question</button>
             </div>
+
+            <!-- Admin Settings Panel -->
+            <div id="admin-settings-panel" style="display: none;">
+                <div class="admin-card">
+                    <h3>AI Configuration</h3>
+                    <p style="color: #666; margin-bottom: 20px; font-size: 0.9rem;">Configure Mistral AI to
+                        automatically generate content for the Knowledge Hub. Your API key is stored locally in your
+                        browser.</p>
+                    <div class="form-group">
+                        <label>Mistral API Key</label>
+                        <input type="password" id="mistral-api-key" class="form-control"
+                            placeholder="Enter Mistral API Key">
+                    </div>
+                    <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+                    <p id="settings-status"
+                        style="margin-top: 10px; color: var(--primary-green); font-size: 0.9rem; display: none;">
+                        Settings saved successfully!</p>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- JavaScript Logic -->
     <script>
@@ -619,22 +927,38 @@
                 {
                     id: 1,
                     title: "Forest Conservation",
-                    text: "Forests cover 31% of our planet's land area. They play a vital role in filtering the air we breathe and mitigating climate change by absorbing carbon dioxide.",
-                    image: "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    text: "Forests cover 31% of our planet's land area. They play a vital role in filtering the air we breathe.",
+                    image: "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    pages: [
+                        "Forests cover 31% of our planet's land area. They play a vital role in filtering the air we breathe and mitigating climate change by absorbing carbon dioxide.",
+                        "Forests provide habitats for 80% of terrestrial biodiversity. From insects to large mammals, countess species depend on the forest canopy and floor for survival.",
+                        "Protecting forests is not just about trees; it's about water cycles, soil conservation, and supporting indigenous communities who have lived sustainably within them for generations."
+                    ]
                 },
                 {
                     id: 2,
                     title: "Wildlife Protection",
-                    text: "Biodiversity is essential for a healthy ecosystem. Protecting wildlife habitats ensures the survival of species and maintains the balance of nature.",
-                    image: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    text: "Biodiversity is essential for a healthy ecosystem. Protecting wildlife habitats ensures the survival of species.",
+                    image: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    pages: [
+                        "Biodiversity is essential for a healthy ecosystem. Protecting wildlife habitats ensures the survival of species and maintains the balance of nature.",
+                        "Poaching and habitat loss are the biggest threats to wildlife. Many iconic species like tigers, rhinos, and elephants are on the brink of extinction.",
+                        "Conservation efforts include establishing protected areas, enforcing anti-poaching laws, and involving local communities in wildlife tourism and protection."
+                    ]
                 },
                 {
                     id: 3,
                     title: "Sustainable Living",
-                    text: "Reducing waste, recycling, and using renewable energy sources are small steps that create a massive impact on preserving our natural resources.",
-                    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    text: "Reducing waste, recycling, and using renewable energy sources create a massive impact.",
+                    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    pages: [
+                        "Reducing waste, recycling, and using renewable energy sources are small steps that create a massive impact on preserving our natural resources.",
+                        "Sustainable living also means being mindful of what we consume. Choosing seasonal, locally-grown food reduces carbon footprints associated with transportation.",
+                        "Adopting a zero-waste lifestyle by avoiding single-use plastics and composting organic waste can significantly reduce the burden on our oceans and landfills."
+                    ]
                 }
             ],
+
             quiz: [
                 {
                     id: 1,
@@ -670,17 +994,27 @@
         };
 
         // Initialize state
-        let appData = JSON.parse(JSON.stringify(defaultData)); 
-        let isLoggedIn = false;
-        
+        const savedData = localStorage.getItem('nature_app_data');
+        let appData = savedData ? JSON.parse(savedData) : JSON.parse(JSON.stringify(defaultData));
+
+        function saveToStorage() {
+            localStorage.setItem('nature_app_data', JSON.stringify(appData));
+        }
+
+        let isLoggedIn = localStorage.getItem('admin_logged_in') === 'true';
+
+
+
+
         // --- AUTHENTICATION ---
         function attemptLogin() {
             const u = document.getElementById('login-username').value;
             const p = document.getElementById('login-password').value;
             const errorMsg = document.getElementById('login-error-msg');
-            
-            if(u === 'admin' && p === 'admin123') {
+
+            if (u === 'admin' && p === 'admin123') {
                 isLoggedIn = true;
+                localStorage.setItem('admin_logged_in', 'true');
                 errorMsg.style.display = 'none';
                 // Clear inputs
                 document.getElementById('login-username').value = '';
@@ -689,18 +1023,21 @@
             } else {
                 errorMsg.style.display = 'block';
             }
+
         }
 
         function logout() {
             isLoggedIn = false;
+            localStorage.removeItem('admin_logged_in');
             updateAdminView();
         }
+
 
         function updateAdminView() {
             const loginPanel = document.getElementById('admin-login-panel');
             const dashboardPanel = document.getElementById('admin-dashboard-panel');
-            
-            if(isLoggedIn) {
+
+            if (isLoggedIn) {
                 loginPanel.style.display = 'none';
                 dashboardPanel.style.display = 'block';
                 renderAdminKnowledge();
@@ -716,9 +1053,9 @@
         function renderKnowledgeHub() {
             const container = document.getElementById('knowledge-container');
             container.innerHTML = '';
-            appData.knowledge.forEach(item => {
+            appData.knowledge.forEach((item, index) => {
                 container.innerHTML += `
-                    <div class="card">
+                    <div class="card" onclick="openKnowledgeModal(${index})">
                         <div class="card-img" style="background-image: url('${item.image}');"></div>
                         <div class="card-content">
                             <h3>${item.title}</h3>
@@ -728,6 +1065,61 @@
                 `;
             });
         }
+
+        let currentModalTopicIndex = 0;
+        let currentModalPageIndex = 0;
+
+        function openKnowledgeModal(index) {
+            currentModalTopicIndex = index;
+            currentModalPageIndex = 0;
+            const topic = appData.knowledge[index];
+
+            document.getElementById('modal-image').style.backgroundImage = `url('${topic.image}')`;
+            document.getElementById('modal-title').textContent = topic.title;
+
+            updateModalPage();
+            document.getElementById('knowledge-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function updateModalPage() {
+            const topic = appData.knowledge[currentModalTopicIndex];
+            const pages = topic.pages || [topic.text];
+            const content = document.getElementById('modal-page-content');
+            const indicator = document.getElementById('page-indicator');
+            const prevBtn = document.getElementById('prev-page-btn');
+            const nextBtn = document.getElementById('next-page-btn');
+
+            content.textContent = pages[currentModalPageIndex];
+            indicator.textContent = `Page ${currentModalPageIndex + 1} of ${pages.length}`;
+
+            prevBtn.disabled = currentModalPageIndex === 0;
+            nextBtn.disabled = currentModalPageIndex === pages.length - 1;
+        }
+
+        function changeModalPage(delta) {
+            currentModalPageIndex += delta;
+            updateModalPage();
+        }
+
+        function closeKnowledgeModal() {
+            document.getElementById('knowledge-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on escape key or clicking outside
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeKnowledgeModal();
+        });
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('knowledge-modal');
+            if (event.target == modal) {
+                closeKnowledgeModal();
+            }
+        }
+
+
 
         let currentQuestionIndex = 0;
         let score = 0;
@@ -753,12 +1145,12 @@
             resultUi.style.display = 'none';
 
             const currentQ = appData.quiz[currentQuestionIndex];
-            
+
             questionText.textContent = currentQ.question;
             questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${appData.quiz.length}`;
-            
+
             optionsContainer.innerHTML = '';
-            
+
             currentQ.options.forEach((opt, index) => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
@@ -769,13 +1161,13 @@
         }
 
         function checkAnswer(selectedIndex, btnElement) {
-            if(isAnswered) return;
+            if (isAnswered) return;
             isAnswered = true;
 
             const correctIndex = appData.quiz[currentQuestionIndex].correct;
             const allButtons = document.getElementById('options-container').children;
 
-            if(selectedIndex === correctIndex) {
+            if (selectedIndex === correctIndex) {
                 btnElement.classList.add('correct');
                 score++;
             } else {
@@ -787,7 +1179,7 @@
 
         function nextQuestion() {
             currentQuestionIndex++;
-            if(currentQuestionIndex < appData.quiz.length) {
+            if (currentQuestionIndex < appData.quiz.length) {
                 renderQuizQuestion();
             } else {
                 showResults();
@@ -801,7 +1193,7 @@
             document.getElementById('total-questions').textContent = appData.quiz.length;
 
             const messageDiv = document.getElementById('message');
-            if(score === appData.quiz.length) {
+            if (score === appData.quiz.length) {
                 messageDiv.textContent = "Outstanding! You are a true Nature Guardian! 🌳";
             } else if (score >= appData.quiz.length / 2) {
                 messageDiv.textContent = "Good job! You know your basics well. 🌱";
@@ -844,7 +1236,7 @@
                 list.innerHTML += `
                     <div class="admin-card">
                         <div class="admin-card-header">
-                            <h4>Q${index+1}: ${item.question}</h4>
+                            <h4>Q${index + 1}: ${item.question}</h4>
                             <div>
                                 <button class="action-btn btn-edit" onclick="editQuiz(${index})">Edit</button>
                                 <button class="action-btn btn-delete" onclick="deleteQuiz(${index})">Delete</button>
@@ -863,7 +1255,18 @@
         function editKnowledge(index) {
             const item = appData.knowledge[index];
             const list = document.getElementById('admin-knowledge-list');
-            // Replace the card with a form
+
+            const pages = item.pages || [item.text];
+            let pagesHtml = '';
+            pages.forEach((p, pi) => {
+                pagesHtml += `
+                    <div class="page-item" id="edit-k-page-container-${index}-${pi}">
+                        <textarea class="form-control" rows="2" placeholder="Page Content">${p}</textarea>
+                        <button class="action-btn btn-delete" onclick="removePageFromEdit(${index}, ${pi})">×</button>
+                    </div>
+                `;
+            });
+
             const formHtml = `
                 <div class="admin-card" style="border: 2px solid var(--primary-green);">
                     <h3>Edit Knowledge Card</h3>
@@ -876,36 +1279,85 @@
                         <input type="text" class="form-control" id="edit-k-img-${index}" value="${item.image}">
                     </div>
                     <div class="form-group">
-                        <label>Content</label>
-                        <textarea class="form-control" rows="3" id="edit-k-text-${index}">${item.text}</textarea>
+                        <label>Short Description (Card Summary)</label>
+                        <textarea class="form-control" id="edit-k-text-${index}">${item.text}</textarea>
                     </div>
-                    <button class="action-btn btn-save" onclick="saveKnowledge(${index})">Save</button>
-                    <button class="action-btn btn-cancel" onclick="renderAdminKnowledge()">Cancel</button>
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <label style="margin-bottom: 0;">Number of Pages to Generate</label>
+                            <input type="number" id="edit-k-page-count-${index}" value="3" min="1" max="10" class="form-control" style="width: 80px; padding: 5px;">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; margin-top: 10px;">
+                            <label style="margin-bottom: 0;">Pages (Detailed Content)</label>
+                            <button id="ai-btn-edit-${index}" class="ai-btn" onclick="generateAIPages(document.getElementById('edit-k-title-${index}').value, 'edit-k-pages-list-${index}', 'ai-status-edit-${index}', 'ai-btn-edit-${index}', document.getElementById('edit-k-page-count-${index}').value)">
+                                ✨ Generate with AI
+                            </button>
+                        </div>
+                        <div id="ai-status-edit-${index}" class="ai-status">Generating...</div>
+                        <div id="edit-k-pages-list-${index}" class="admin-pages-list">
+                            ${pagesHtml}
+                        </div>
+                        <button class="action-btn btn-add" style="font-size: 0.8rem; padding: 4px 10px;" onclick="addPageToEdit(${index})">+ Add Page manually</button>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button class="action-btn btn-save" onclick="saveKnowledge(${index})">Save</button>
+                        <button class="action-btn btn-cancel" onclick="renderAdminKnowledge()">Cancel</button>
+                    </div>
                 </div>
             `;
-            // For simplicity in this demo, we re-render list but inject form at index
-            renderAdminKnowledge(); 
-            // Now hackily find the child and replace it. 
+            renderAdminKnowledge();
             const cardToReplace = list.children[index];
             cardToReplace.outerHTML = formHtml;
         }
 
+
+        function addPageToEdit(index) {
+            const container = document.getElementById(`edit-k-pages-list-${index}`);
+            const pi = container.children.length;
+            const pageDiv = document.createElement('div');
+            pageDiv.className = 'page-item';
+            pageDiv.id = `edit-k-page-container-${index}-${pi}`;
+            pageDiv.innerHTML = `
+                <textarea class="form-control" rows="2" placeholder="Page Content"></textarea>
+                <button class="action-btn btn-delete" onclick="this.parentElement.remove()">×</button>
+            `;
+            container.appendChild(pageDiv);
+        }
+
+        function removePageFromEdit(index, pi) {
+            document.getElementById(`edit-k-page-container-${index}-${pi}`).remove();
+        }
+
         function saveKnowledge(index) {
-            appData.knowledge[index].title = document.getElementById(`edit-k-title-${index}`).value;
-            appData.knowledge[index].image = document.getElementById(`edit-k-img-${index}`).value;
-            appData.knowledge[index].text = document.getElementById(`edit-k-text-${index}`).value;
+            const title = document.getElementById(`edit-k-title-${index}`).value;
+            const image = document.getElementById(`edit-k-img-${index}`).value;
+            const text = document.getElementById(`edit-k-text-${index}`).value;
+
+            const pageTextareas = document.querySelectorAll(`#edit-k-pages-list-${index} textarea`);
+            const pages = Array.from(pageTextareas).map(t => t.value).filter(v => v.trim() !== '');
+
+            appData.knowledge[index].title = title;
+            appData.knowledge[index].image = image;
+            appData.knowledge[index].text = text;
+            appData.knowledge[index].pages = pages;
+
+            saveToStorage();
             renderAdminKnowledge();
-            renderKnowledgeHub(); // Update user view
+            renderKnowledgeHub();
             alert("Knowledge updated!");
         }
 
+
         function deleteKnowledge(index) {
-            if(confirm("Delete this topic?")) {
+            if (confirm("Delete this topic?")) {
                 appData.knowledge.splice(index, 1);
+                saveToStorage();
                 renderAdminKnowledge();
                 renderKnowledgeHub();
             }
         }
+
 
         function showAddKnowledgeForm() {
             const list = document.getElementById('admin-knowledge-list');
@@ -914,34 +1366,79 @@
                     <h3>Add New Topic</h3>
                     <div class="form-group">
                         <label>Title</label>
-                        <input type="text" class="form-control" id="new-k-title">
+                        <input type="text" class="form-control" id="new-k-title" placeholder="e.g. Amazon Rainforest">
                     </div>
                     <div class="form-group">
                         <label>Image URL</label>
                         <input type="text" class="form-control" id="new-k-img" placeholder="https://...">
                     </div>
                     <div class="form-group">
-                        <label>Content</label>
-                        <textarea class="form-control" rows="3" id="new-k-text"></textarea>
+                        <label>Short Description (Card Summary)</label>
+                        <textarea class="form-control" id="new-k-text"></textarea>
                     </div>
-                    <button class="action-btn btn-save" onclick="addKnowledge()">Add Topic</button>
-                    <button class="action-btn btn-cancel" onclick="renderAdminKnowledge()">Cancel</button>
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <label style="margin-bottom: 0;">Number of Pages to Generate</label>
+                            <input type="number" id="new-k-page-count" value="3" min="1" max="10" class="form-control" style="width: 80px; padding: 5px;">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; margin-top: 10px;">
+                            <label style="margin-bottom: 0;">Pages (Detailed Content)</label>
+                            <button id="ai-btn-new" class="ai-btn" onclick="generateAIPages(document.getElementById('new-k-title').value, 'new-k-pages-list', 'ai-status-new', 'ai-btn-new', document.getElementById('new-k-page-count').value)">
+                                ✨ Generate with AI
+                            </button>
+                        </div>
+                        <div id="ai-status-new" class="ai-status">Generating...</div>
+                        <div id="new-k-pages-list" class="admin-pages-list">
+                            <div class="page-item">
+                                <textarea class="form-control" rows="2" placeholder="Page 1 Content"></textarea>
+                            </div>
+                        </div>
+                        <button class="action-btn btn-add" style="font-size: 0.8rem; padding: 4px 10px;" onclick="addPageToNew()">+ Add Page manually</button>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button class="action-btn btn-save" onclick="addKnowledge()">Add Topic</button>
+                        <button class="action-btn btn-cancel" onclick="renderAdminKnowledge()">Cancel</button>
+                    </div>
                 </div>
             `;
             list.innerHTML += formHtml;
         }
 
+
+        function addPageToNew() {
+            const container = document.getElementById('new-k-pages-list');
+            const pageDiv = document.createElement('div');
+            pageDiv.className = 'page-item';
+            pageDiv.innerHTML = `
+                <textarea class="form-control" rows="2" placeholder="Next Page Content"></textarea>
+                <button class="action-btn btn-delete" onclick="this.parentElement.remove()">×</button>
+            `;
+            container.appendChild(pageDiv);
+        }
+
         function addKnowledge() {
+            const title = document.getElementById('new-k-title').value;
+            const image = document.getElementById('new-k-img').value || 'https://via.placeholder.com/600';
+            const text = document.getElementById('new-k-text').value;
+
+            const pageTextareas = document.querySelectorAll('#new-k-pages-list textarea');
+            const pages = Array.from(pageTextareas).map(t => t.value).filter(v => v.trim() !== '');
+
             const newItem = {
                 id: Date.now(),
-                title: document.getElementById('new-k-title').value,
-                image: document.getElementById('new-k-img').value || 'https://via.placeholder.com/600',
-                text: document.getElementById('new-k-text').value
+                title: title,
+                image: image,
+                text: text,
+                pages: pages.length > 0 ? pages : [text]
             };
             appData.knowledge.push(newItem);
+            saveToStorage();
             renderAdminKnowledge();
             renderKnowledgeHub();
         }
+
+
 
         // --- QUIZ EDITING LOGIC ---
 
@@ -992,18 +1489,21 @@
                 document.getElementById(`edit-q-o3-${index}`).value
             ];
             appData.quiz[index].correct = parseInt(document.getElementById(`edit-q-correct-${index}`).value);
+            saveToStorage();
             renderAdminQuiz();
-            restartQuiz(); // Reset user quiz with new data
+            restartQuiz();
             alert("Question updated!");
         }
 
         function deleteQuiz(index) {
-            if(confirm("Delete this question?")) {
+            if (confirm("Delete this question?")) {
                 appData.quiz.splice(index, 1);
+                saveToStorage();
                 renderAdminQuiz();
                 restartQuiz();
             }
         }
+
 
         function showAddQuizForm() {
             const list = document.getElementById('admin-quiz-list');
@@ -1046,21 +1546,23 @@
                 correct: parseInt(document.getElementById('new-q-correct').value)
             };
             appData.quiz.push(newItem);
+            saveToStorage();
             renderAdminQuiz();
             restartQuiz();
         }
+
 
         // --- NAVIGATION & ROUTING ---
 
         function switchView(viewName) {
             const userView = document.getElementById('user-view');
             const adminView = document.getElementById('admin-view');
-            
-            if(viewName === 'admin') {
+
+            if (viewName === 'admin') {
                 userView.style.display = 'none';
                 adminView.style.display = 'block';
                 updateAdminView();
-                window.scrollTo(0,0);
+                window.scrollTo(0, 0);
             } else {
                 adminView.style.display = 'none';
                 userView.style.display = 'block';
@@ -1070,40 +1572,168 @@
         function switchAdminTab(tab) {
             const kPanel = document.getElementById('admin-knowledge-panel');
             const qPanel = document.getElementById('admin-quiz-panel');
+            const sPanel = document.getElementById('admin-settings-panel');
             const btns = document.querySelectorAll('.tab-btn');
-            
+
             btns.forEach(b => b.classList.remove('active'));
 
-            if(tab === 'knowledge') {
+            if (tab === 'knowledge') {
                 kPanel.style.display = 'block';
                 qPanel.style.display = 'none';
+                sPanel.style.display = 'none';
                 btns[0].classList.add('active');
-            } else {
+            } else if (tab === 'quiz') {
                 kPanel.style.display = 'none';
                 qPanel.style.display = 'block';
+                sPanel.style.display = 'none';
                 btns[1].classList.add('active');
+            } else {
+                kPanel.style.display = 'none';
+                qPanel.style.display = 'none';
+                sPanel.style.display = 'block';
+                btns[2].classList.add('active');
+
+                // Pre-fill API key if exists
+                const savedKey = localStorage.getItem('mistral_api_key');
+                if (savedKey) document.getElementById('mistral-api-key').value = savedKey;
             }
         }
 
+
+        // --- SETTINGS & AI LOGIC ---
+
+        function saveSettings() {
+            const key = document.getElementById('mistral-api-key').value;
+            localStorage.setItem('mistral_api_key', key);
+
+            const status = document.getElementById('settings-status');
+            status.style.display = 'block';
+            setTimeout(() => status.style.display = 'none', 3000);
+        }
+
+        async function generateAIPages(title, containerId, statusId, btnId, count) {
+            if (!title) {
+                alert("Please enter a topic title first.");
+                return;
+            }
+
+            // Fallback for user provided key if nothing in localStorage
+            if (!localStorage.getItem('mistral_api_key')) {
+                localStorage.setItem('mistral_api_key', '');
+            }
+
+
+            const apiKey = localStorage.getItem('mistral_api_key');
+            const status = document.getElementById(statusId);
+            const btn = document.getElementById(btnId);
+            const container = document.getElementById(containerId);
+
+            status.style.display = 'flex';
+            status.innerHTML = '<span class="spinner"></span> <span>AI is gathering knowledge...</span>';
+            status.style.color = 'var(--primary-green)';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "mistral-tiny",
+                        messages: [
+                            {
+                                role: "system",
+                                content: "You are an expert environmental educator. Provide concise, engaging educational content for a Nature Awareness website."
+                            },
+                            {
+                                role: "user",
+                                content: `Generate exactly ${count} educational pages about "${title}". 
+                                IMPORTANT: Follow these formatting rules strictly:
+                                1. Write exactly ${count} distinct paragraphs.
+                                2. Each paragraph must be 40-60 words long.
+                                3. Place exactly '---' on a line by itself BETWEEN each paragraph.
+                                4. DO NOT use titles, page numbers, or any other introductory text.
+                                5. Output JUST the paragraphs and separators.`
+                            }
+                        ],
+                        temperature: 0.7
+                    })
+                });
+
+                if (!response.ok) {
+                    const err = await response.json();
+                    throw new Error(err.message || 'API request failed');
+                }
+
+                const data = await response.json();
+                const fullText = data.choices[0].message.content;
+
+                // More robust splitting
+                let pages = fullText.split('---').map(p => p.trim()).filter(p => p.length > 10);
+
+                // Fallback: If AI ignored '---' but used double newlines
+                if (pages.length < count && fullText.includes('\n\n')) {
+                    const fallbackPages = fullText.split('\n\n').map(p => p.trim()).filter(p => p.length > 20);
+                    if (fallbackPages.length >= count) {
+                        pages = fallbackPages.slice(0, count);
+                    }
+                }
+
+
+                if (pages.length > 0) {
+                    container.innerHTML = '';
+                    pages.forEach((p, i) => {
+                        const pageDiv = document.createElement('div');
+                        pageDiv.className = 'page-item';
+                        pageDiv.innerHTML = `
+                            <textarea class="form-control" rows="3" placeholder="Page ${i + 1} Content">${p}</textarea>
+                            <button class="action-btn btn-delete" onclick="this.parentElement.remove()">×</button>
+                        `;
+                        container.appendChild(pageDiv);
+                    });
+                    status.style.display = 'none'; // Hide on success
+                } else {
+                    throw new Error("Could not parse AI response.");
+                }
+
+            } catch (error) {
+                console.error("AI Generation Error:", error);
+                status.innerHTML = 'Error: ' + error.message;
+                status.style.color = 'var(--danger)';
+            } finally {
+                btn.disabled = false;
+                // If it's an error, keep it visible for a few seconds. If success, it's already hidden.
+                if (status.style.color === 'var(--danger)') {
+                    setTimeout(() => status.style.display = 'none', 8000);
+                }
+            }
+        }
+
+
+
         function navigateTo(sectionId) {
+
             // Ensure we are in user view first
             switchView('user');
-            
+
             // Allow slight delay for DOM to reappear if switching from admin
             setTimeout(() => {
                 const element = document.getElementById(sectionId);
-                if(element) {
+                if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
                 }
             }, 50);
         }
 
         // --- INITIALIZATION ---
-        window.onload = function() {
+        window.onload = function () {
             renderKnowledgeHub();
             renderQuizQuestion();
         }
 
     </script>
 </body>
+
 </html>
