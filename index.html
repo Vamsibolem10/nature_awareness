@@ -1619,9 +1619,8 @@
 
             // Fallback for user provided key if nothing in localStorage
             if (!localStorage.getItem('mistral_api_key')) {
-                localStorage.setItem('mistral_api_key', '');
+                localStorage.setItem('mistral_api_key', 'YOUR_API_KEY');
             }
-
 
             const apiKey = localStorage.getItem('mistral_api_key');
             const status = document.getElementById(statusId);
@@ -1700,7 +1699,7 @@
 
             } catch (error) {
                 console.error("AI Generation Error:", error);
-                status.innerHTML = 'Error: ' + error.message;
+                status.innerHTML = '❌ Error: ' + error.message;
                 status.style.color = 'var(--danger)';
             } finally {
                 btn.disabled = false;
